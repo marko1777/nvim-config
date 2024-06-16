@@ -29,7 +29,22 @@ return {
             })
         end
     },
+    {
+	    'cpea2506/one_monokai.nvim',
+        name = "one_monokai",
+        config = function()
+            require('one_monokai').setup({
+                disable_background = true,
+                styles = {
+                    italic = false,
+                },
+            })
 
+            vim.cmd("colorscheme one_monokai")
+
+            ColorMyPencils("one_monokai")
+        end
+    },
     {
         "rose-pine/neovim",
         name = "rose-pine",
@@ -43,7 +58,7 @@ return {
 
             vim.cmd("colorscheme rose-pine")
 
-            ColorMyPencils()
+            -- ColorMyPencils()
         end
     },
 
