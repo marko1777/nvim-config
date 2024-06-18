@@ -9,8 +9,8 @@ return {
         name = "vim-visual-multi"
     },
     {
-        "tpope/vim-commentary",
-        name = "vim-commentary"
+        "numToStr/Comment.nvim",
+        name = "comment"
     },
     -- "eandrju/cellular-automaton.nvim",
 }

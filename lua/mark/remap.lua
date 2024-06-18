@@ -11,10 +11,10 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 vim.keymap.set("n", "Q", "<nop>")
 
@@ -33,7 +33,7 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
-vim.keymap.set("n", "<esc>", ':noh<cr><esc>', {silent=true})
+vim.keymap.set("n", "<esc>", ':noh<cr><esc>', { silent = true })
 
 _G.toggle_wrap = function()
     local wrap = vim.wo.wrap
@@ -41,4 +41,4 @@ _G.toggle_wrap = function()
     vim.wo.wrap = not wrap
 end
 
-vim.keymap.set("n", "<M-z>", ':lua toggle_wrap()<CR>', {silent=true})
+vim.keymap.set("n", "<A-z>", ':lua toggle_wrap()<CR>', { silent = true })
