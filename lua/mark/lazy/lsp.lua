@@ -22,6 +22,16 @@ return {
             vim.lsp.protocol.make_client_capabilities(),
             cmp_lsp.default_capabilities())
 
+        -- require('lspconfig').gopls.setup {
+        --     -- ... other gopls options
+        --     on_attach = function(client, bufnr)
+        --         -- ...
+        --         vim.api.nvim_create_autocmd("BufWritePre", {
+        --             buffer = bufnr,
+        --             command = ":!goimports % | golines --max-len=80 %"--lua vim.lsp.buf.formatting_sync()"
+        --         })
+        --     end
+        -- }
         require("fidget").setup({})
         require("mason").setup()
         require("mason-lspconfig").setup({
@@ -67,6 +77,10 @@ return {
                 ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
                 ['<C-y>'] = cmp.mapping.confirm({ select = true }),
                 ["<C-Space>"] = cmp.mapping.complete(),
+                ['<CR>'] = cmp.mapping.confirm {
+                    behavior = cmp.ConfirmBehavior.Replace,
+                    select = true,
+                },
             }),
             sources = cmp.config.sources({
                 { name = 'nvim_lsp' },
