@@ -11,6 +11,8 @@ return {
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
+        "jay-babu/mason-null-ls.nvim",
+        "nvimtools/none-ls.nvim",
     },
 
     config = function()
@@ -39,6 +41,9 @@ return {
                 "lua_ls",
                 -- "rust_analyzer",
                 "gopls",
+                "pyright",
+                "clangd",
+
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -62,6 +67,27 @@ return {
                     }
                 end,
             }
+        })
+        require("mason-null-ls").setup({
+            ensure_installed = {
+                "stylua",
+                "jq",
+                "goimports",
+                "golines",
+                "clang-format",
+                -- "prettier",
+                "black",
+            }
+        })
+
+        local null_ls = require("null-ls")
+
+        null_ls.setup({
+            sources = {
+                null_ls.builtins.formatting.black.with({
+                    filetypes = { "python" },
+                }),
+            },
         })
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }

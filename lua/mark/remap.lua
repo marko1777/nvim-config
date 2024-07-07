@@ -42,9 +42,9 @@ _G.toggle_wrap = function()
 end
 
 vim.keymap.set("n", "<A-z>", ':lua toggle_wrap()<CR>', { silent = true })
-
+vim.keymap.set("n", "<C-c>", "<C-a>")
 -- -- Function to execute macro over visual range
--- _G.execute_macro_over_visual_range = function()
+-- _G.execute_macro_over_visual_rangc = function()
 --   local macro_register = vim.fn.getchar()
 --   local cmd = string.format("'<,'>normal @%s", vim.fn.nr2char(macro_register))
 --   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-u>", true, false, true), "n", false) -- Clear command line
@@ -53,9 +53,9 @@ vim.keymap.set("n", "<A-z>", ':lua toggle_wrap()<CR>', { silent = true })
 --
 -- -- Key mapping
 -- vim.keymap.set("v", "@", function()
---   vim.cmd("call v:lua.execute_macro_over_visual_range()")
--- end, { noremap = true, silent = true })
+--   vim.cmd("call v:lua
+-- end, { noremap = true
 
--- vim.keymap.set("n", "<C-h>", '<C-w>h')
--- To remain on the same occurence
+-- vim.keymap.set("n", "
+-- To remain on the same
 vim.keymap.set("n", "*", '*N')
