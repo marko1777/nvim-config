@@ -52,6 +52,20 @@ return {
                     }
                 end,
 
+
+                -- ["clangd"] = function()
+                --     require('lspconfig').clangd.setup {
+                --         cmd = {
+                --             "clangd",
+                --             "--background-index",
+                --             "--clang-tidy",
+                --             "--header-insertion=iwyu",
+                --             "--sync=c++20"
+                --         },
+                --         -- ...other settings
+                --     }
+                -- end,
+
                 ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.lua_ls.setup {

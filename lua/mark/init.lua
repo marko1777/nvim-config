@@ -20,7 +20,7 @@ vim.filetype.add({
 
 -- autocmd("FileType", {
 --     pattern = {"c", "c++", "h"},
---     callback = function()
+--    callback = function()
 --         vim.bo.commentsring = "// %s"
 --     end,
 -- })
@@ -87,3 +87,24 @@ vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 -- vim.g.netrw_keepdir = 0
 vim.opt.scrolloff = 12
+
+vim.api.nvim_set_keymap("n", "<leader>n", ":ASToggle<CR>", {})
+-- vim.api.nvim_set_keymap("n", "<C-w>|", "<C-w>z", {})
+
+-- vim.keymap.set("i", "<Esc>", function()
+--   vim.cmd("update")
+--   return "<Esc>"
+-- end, { silent = true })
+
+
+-- vim.api.nvim_create_autocmd({ "TextChanged", "FocusLost", "BufEnter" }, {
+--   pattern = "*", -- Apply to all files
+--   callback = function()
+--     vim.cmd("silent update")
+--   end,
+-- })
+
+-- vim.keymap.set("i", "<Esc>", function()
+--   vim.cmd("update") -- Save the file
+--   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+-- end, { silent = true })
