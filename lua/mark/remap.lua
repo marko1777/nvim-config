@@ -43,6 +43,18 @@ end
 
 vim.keymap.set("n", "<A-z>", ':lua toggle_wrap()<CR>', { silent = true })
 vim.keymap.set("n", "<C-c>", "<C-a>")
+
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
+
+vim.keymap.set("n", "<leader>tt", ":tabnew .<CR>")
+vim.keymap.set("n", "<leader>tn", ":tabnext<CR>")
+vim.keymap.set("n", "<leader>tp", ":tabprev<CR>")
+vim.keymap.set("n", "<leader>to", ":tabo<CR>")
+vim.keymap.set("n", "<leader>tc", ":tabc<CR>")
+
+-- vim.keymap.set("i", "jk", "<ESC>")
+--
 -- -- Function to execute macro over visual range
 -- _G.execute_macro_over_visual_rangc = function()
 --   local macro_register = vim.fn.getchar()
