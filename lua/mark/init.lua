@@ -36,10 +36,22 @@ autocmd('TextYankPost', {
     end,
 })
 
-autocmd({"BufWritePre"}, {
+autocmd({ "BufWritePre" }, {
     group = MarkGroup,
     pattern = "*",
     command = [[%s/\s\+$//e]],
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "netrw", -- Only apply to Netrw buffers
+    callback = function()
+        local bind = function(lhs, rhs)
+            vim.keymap.set('n', lhs, rhs, { remap = true, buffer = true })
+        end
+
+        bind("<C-h>", "<C-w>h")
+        bind("<C-l>", "<C-w>l")
+    end
 })
 
 -- vim.api.nvim_create_autocmd("BufWriteCmd", {
