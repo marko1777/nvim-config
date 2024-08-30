@@ -131,3 +131,6 @@ vim.api.nvim_set_keymap("n", "<leader>n", ":ASToggle<CR>", {})
 --   vim.cmd("update") -- Save the file
 --   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
 -- end, { silent = true })
+--
+--
+
