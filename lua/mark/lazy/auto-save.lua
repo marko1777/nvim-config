@@ -12,7 +12,9 @@ return {
             },
             debounce_delay = 1500,
             trigger_events = { "InsertLeave" },
+            condition = function()
+                return not vim.g.VM_insert_mode -- Disable if in vim-visual-multi insert mode
+            end,
         }
     end,
 }
-
