@@ -58,6 +58,8 @@ return {
 
                 ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
+                    lspconfig.htmx.setup {}
+
                     lspconfig.lua_ls.setup {
                         capabilities = capabilities,
                         settings = {

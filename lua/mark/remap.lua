@@ -45,13 +45,13 @@ vim.keymap.set("n", "<A-z>", ':lua toggle_wrap()<CR>', { silent = true })
 vim.keymap.set("n", "<C-c>", "<C-a>")
 
 vim.keymap.set("n", "<C-h>", "<C-w>h")
+-- vim.keymap.set("n", "<C-j>", "<C-w>j")
+-- vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
 
-vim.keymap.set("n", "<leader>tt", ":tabnew .<CR>")
-vim.keymap.set("n", "<leader>tn", ":tabnext<CR>")
-vim.keymap.set("n", "<leader>tp", ":tabprev<CR>")
-vim.keymap.set("n", "<leader>to", ":tabo<CR>")
-vim.keymap.set("n", "<leader>tc", ":tabc<CR>")
+vim.keymap.set("i", "jj", "<Esc>", { noremap = true })
+vim.keymap.set("i", "jk", "<Esc>", { noremap = true })
+vim.keymap.set("i", "kj", "<Esc>", { noremap = true })
 
 -- vim.keymap.set("i", "jk", "<ESC>")
 --
@@ -71,3 +71,16 @@ vim.keymap.set("n", "<leader>tc", ":tabc<CR>")
 -- vim.keymap.set("n", "
 -- To remain on the same
 vim.keymap.set("n", "*", '*N')
+
+vim.keymap.set(
+    "n",
+    "<leader>ee",
+    "oif err != nil {<CR>}<Esc>Oreturn err<Esc>"
+)
+
+vim.keymap.set(
+    "n",
+    "<leader>el",
+    "oif err != nil {<CR>}<Esc>Ologger.Error(\"error\", \"error\", err)<Esc>F.;i"
+)
+

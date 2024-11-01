@@ -29,3 +29,5 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "90"
+
+vim.g.auto_save_log_level = vim.log.levels.DEBUG
