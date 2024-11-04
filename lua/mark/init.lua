@@ -114,7 +114,8 @@ vim.g.netrw_winsize = 25
 -- vim.g.netrw_keepdir = 0
 vim.opt.scrolloff = 12
 
-vim.api.nvim_set_keymap("n", "<leader>n", ":ASToggle<CR>", {})
+vim.api.nvim_set_hl(0, "CurSearch", { bg = "#FFA500", fg = "black", bold = true, underline = true })  -- Orange background, black text, bold, underlined
+
 -- vim.api.nvim_set_keymap("n", "<C-w>|", "<C-w>z", {})
 
 -- vim.keymap.set("i", "<Esc>", function()

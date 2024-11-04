@@ -49,6 +49,12 @@ vim.keymap.set("n", "<C-h>", "<C-w>h")
 -- vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
 
+vim.keymap.set("n", "<leader>tn", ":tabnew .<CR>")
+vim.keymap.set("n", "<leader>tk", ":tabnext<CR>")
+vim.keymap.set("n", "<leader>tj", ":tabprev<CR>")
+vim.keymap.set("n", "<leader>to", ":tabo<CR>")
+vim.keymap.set("n", "<leader>tx", ":tabc<CR>")
+
 vim.keymap.set("i", "jj", "<Esc>", { noremap = true })
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true })
 vim.keymap.set("i", "kj", "<Esc>", { noremap = true })

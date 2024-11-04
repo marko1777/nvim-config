@@ -25,6 +25,7 @@ return {
                 return not vim.g.VM_insert_mode -- Disable if in vim-visual-multi insert mode
             end,
             noautocmd = false,
+            vim.api.nvim_set_keymap("n", "<leader>n", ":ASToggle<CR>", {}),
             -- debug = true,
             -- log_level = vim.log.levels.DEBUG, -- Enable debug logging
         }

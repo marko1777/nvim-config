@@ -43,18 +43,18 @@ return {
                 end,
 
 
-                -- ["clangd"] = function()
-                --     require('lspconfig').clangd.setup {
-                --         cmd = {
-                --             "clangd",
-                --             "--background-index",
-                --             "--clang-tidy",
-                --             "--header-insertion=iwyu",
-                --             "--sync=c++20"
-                --         },
-                --         -- ...other settings
-                --     }
-                -- end,
+                ["clangd"] = function()
+                    require('lspconfig').clangd.setup {
+                        cmd = {
+                            "clangd",
+                            -- "--background-index",
+                            -- "--clang-tidy",
+                            -- "--header-insertion=iwyu",
+                            -- "--sync=c++20"
+                        },
+                    }
+                end,
+
 
                 ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
@@ -74,6 +74,18 @@ return {
                 end,
             }
         })
+        local html_capabilities = vim.lsp.protocol.make_client_capabilities()
+        html_capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+        require 'lspconfig'.html.setup {
+            capabilities = html_capabilities,
+        }
+        require 'lspconfig'.ts_ls.setup {
+            -- filetypes = table.insert(require 'lspconfig'.ts_ls.filetypes, "html")
+            filetypes = { "html" }
+        }
+
+
         require("mason-null-ls").setup({
             ensure_installed = {
                 "stylua",
