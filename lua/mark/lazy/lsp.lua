@@ -4,6 +4,7 @@ return {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-nvim-lua",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
@@ -128,11 +129,14 @@ return {
                     select = true,
                 },
             }),
+
             sources = cmp.config.sources({
+                { name = 'nvim_lua'},
                 { name = 'nvim_lsp' },
+                { name = 'path'},
                 { name = 'luasnip' }, -- For luasnip users.
             }, {
-                { name = 'buffer' },
+                { name = 'buffer', keyword_length = 5 },
             })
         })
 
