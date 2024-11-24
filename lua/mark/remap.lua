@@ -19,8 +19,7 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 vim.keymap.set("n", "Q", "<nop>")
 
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
-
+vim.keymap.set("n", "<leader>f", "<cmd>lua require'conform'.format()<CR>")
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
@@ -33,15 +32,15 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
-vim.keymap.set("n", "<esc>", ':noh<cr><esc>', { silent = true })
+vim.keymap.set("n", "<esc>", ":noh<cr><esc>", { silent = true })
 
 _G.toggle_wrap = function()
-    local wrap = vim.wo.wrap
+	local wrap = vim.wo.wrap
 
-    vim.wo.wrap = not wrap
+	vim.wo.wrap = not wrap
 end
 
-vim.keymap.set("n", "<A-z>", ':lua toggle_wrap()<CR>', { silent = true })
+vim.keymap.set("n", "<A-z>", ":lua toggle_wrap()<CR>", { silent = true })
 vim.keymap.set("n", "<C-c>", "<C-a>")
 
 vim.keymap.set("n", "<C-h>", "<C-w>h")
@@ -76,17 +75,8 @@ vim.keymap.set("i", "kj", "<Esc>", { noremap = true })
 
 -- vim.keymap.set("n", "
 -- To remain on the same
-vim.keymap.set("n", "*", '*N')
+vim.keymap.set("n", "*", "*N")
 
-vim.keymap.set(
-    "n",
-    "<leader>ee",
-    "oif err != nil {<CR>}<Esc>Oreturn err<Esc>"
-)
+vim.keymap.set("n", "<leader>ee", "oif err != nil {<CR>}<Esc>Oreturn err<Esc>")
 
-vim.keymap.set(
-    "n",
-    "<leader>el",
-    "oif err != nil {<CR>}<Esc>Ologger.Error(\"error\", \"error\", err)<Esc>F.;i"
-)
-
+vim.keymap.set("n", "<leader>el", 'oif err != nil {<CR>}<Esc>Ologger.Error("error", "error", err)<Esc>F.;i')

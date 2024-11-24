@@ -9,6 +9,7 @@ local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
 
 vim.o.guifont = "Fira Code:h13"
+vim.g.have_nerd_font = true
 
 
 function R(name)
