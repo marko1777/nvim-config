@@ -52,12 +52,17 @@ return {
 							-- "--header-insertion=iwyu",
 							-- "--sync=c++20"
 						},
+						-- settings = {
+						-- 	clangd = {
+						-- 		arguments = { "-I/usr/include/" },
+						-- 	},
+						-- },
 					})
 				end,
 
 				["lua_ls"] = function()
 					local lspconfig = require("lspconfig")
-					lspconfig.sqlfluff.setup({})
+					-- lspconfig.sqlfluff.setup({})
 
 					lspconfig.htmx.setup({})
 

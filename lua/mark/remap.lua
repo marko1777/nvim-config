@@ -8,8 +8,9 @@ vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
--- greatest remap ever
+-- greatest remaps ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
+vim.keymap.set("n", "<leader>dd", [["_dd]])
 
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
@@ -51,7 +52,7 @@ vim.keymap.set("n", "<C-l>", "<C-w>l")
 vim.keymap.set("n", "<leader>tn", ":tabnew .<CR>")
 vim.keymap.set("n", "<leader>tk", ":tabnext<CR>")
 vim.keymap.set("n", "<leader>tj", ":tabprev<CR>")
-vim.keymap.set("n", "<leader>to", ":tabo<CR>")
+vim.keymap.set("n", "<leader>tto", ":tabo<CR>")
 vim.keymap.set("n", "<leader>tx", ":tabc<CR>")
 
 vim.keymap.set("i", "jj", "<Esc>", { noremap = true })

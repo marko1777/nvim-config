@@ -6,7 +6,7 @@ vim.opt.relativenumber = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.expandtab = false
+vim.opt.expandtab = true
 
 vim.opt.smartindent = true
 
@@ -30,4 +30,4 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "90"
 
-vim.g.auto_save_log_level = vim.log.levels.DEBUG
+-- vim.g.auto_save_log_level = vim.log.levels.DEBUG

@@ -7,9 +7,9 @@ return {
 	},
 	config = function()
 		require("go").setup({
-			gofmt = "golines", -- gofmt through gopls: alternative is gofumpt, goimports, golines, gofmt, etc
-			goimports = "goimports",
-			max_line_len = 80,
+			-- gofmt = "golines", -- gofmt through gopls: alternative is gofumpt, goimports, golines, gofmt, etc
+			-- goimports = "goimports",
+			-- max_line_len = 80,
 		})
 		-- local format_sync_grp = vim.api.nvim_create_augroup("goimports", {})
 		-- vim.api.nvim_create_autocmd("BufWritePre", {
