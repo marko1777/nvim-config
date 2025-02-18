@@ -3,23 +3,22 @@ require("mark.set")
 require("mark.lazy_init")
 
 local augroup = vim.api.nvim_create_augroup
-local MarkGroup = augroup('mark', {})
+local MarkGroup = augroup("mark", {})
 
 local autocmd = vim.api.nvim_create_autocmd
-local yank_group = augroup('HighlightYank', {})
+local yank_group = augroup("HighlightYank", {})
 
 vim.o.guifont = "Fira Code:h13"
 vim.g.have_nerd_font = true
 
-
 function R(name)
-    require("plenary.reload").reload_module(name)
+	require("plenary.reload").reload_module(name)
 end
 
 vim.filetype.add({
-    extension = {
-        templ = 'templ',
-    }
+	extension = {
+		templ = "templ",
+	},
 })
 
 -- autocmd("FileType", {
@@ -29,33 +28,33 @@ vim.filetype.add({
 --     end,
 -- })
 
-autocmd('TextYankPost', {
-    group = yank_group,
-    pattern = '*',
-    callback = function()
-        vim.highlight.on_yank({
-            higroup = 'IncSearch',
-            timeout = 40,
-        })
-    end,
+autocmd("TextYankPost", {
+	group = yank_group,
+	pattern = "*",
+	callback = function()
+		vim.highlight.on_yank({
+			higroup = "IncSearch",
+			timeout = 40,
+		})
+	end,
 })
 
 autocmd({ "BufWritePre" }, {
-    group = MarkGroup,
-    pattern = "*",
-    command = [[%s/\s\+$//e]],
+	group = MarkGroup,
+	pattern = "*",
+	command = [[%s/\s\+$//e]],
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "netrw", -- Only apply to Netrw buffers
-    callback = function()
-        local bind = function(lhs, rhs)
-            vim.keymap.set('n', lhs, rhs, { remap = true, buffer = true })
-        end
+	pattern = "netrw", -- Only apply to Netrw buffers
+	callback = function()
+		local bind = function(lhs, rhs)
+			vim.keymap.set("n", lhs, rhs, { remap = true, buffer = true })
+		end
 
-        bind("<C-h>", "<C-w>h")
-        bind("<C-l>", "<C-w>l")
-    end
+		bind("<C-h>", "<C-w>h")
+		bind("<C-l>", "<C-w>l")
+	end,
 })
 
 -- vim.api.nvim_create_autocmd("BufWriteCmd", {
@@ -81,41 +80,59 @@ vim.api.nvim_create_autocmd("FileType", {
 --   group = vim.api.nvim_create_augroup("GoImportsOnSave", { clear = true }), -- Group for easier management
 -- })
 
-autocmd('LspAttach', {
-    group = MarkGroup,
-    callback = function(e)
-        local opts = { buffer = e.buf }
-        vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-        vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, opts)
-        vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-        vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-        vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-        vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-        vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-        -- vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-        vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-        vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
-    end
+autocmd("LspAttach", {
+	group = MarkGroup,
+	callback = function(e)
+		local opts = { buffer = e.buf }
+		vim.keymap.set("n", "gd", function()
+			vim.lsp.buf.definition()
+		end, opts)
+		-- vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, opts)
+		vim.keymap.set("n", "K", function()
+			vim.lsp.buf.hover()
+		end, opts)
+		vim.keymap.set("n", "<leader>vws", function()
+			vim.lsp.buf.workspace_symbol()
+		end, opts)
+		vim.keymap.set("n", "<leader>vd", function()
+			vim.diagnostic.open_float()
+		end, opts)
+		vim.keymap.set("n", "<leader>vca", function()
+			vim.lsp.buf.code_action()
+		end, opts)
+		vim.keymap.set("n", "<leader>vrn", function()
+			vim.lsp.buf.rename()
+		end, opts)
+		-- vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+		vim.keymap.set("n", "[d", function()
+			vim.diagnostic.jump({ count = 1, float = true })
+		end, opts)
+		vim.keymap.set("n", "]d", function()
+			vim.diagnostic.jump({ count = -1, float = true })
+		end, opts)
+	end,
 })
 
 vim.filetype.add({
-  extension = {
-    gotmpl = 'gotmpl',
-  },
-  pattern = {
-    [".*/templates/.*%.tpl"] = "helm",
-    [".*/templates/.*%.ya?ml"] = "helm",
-    ["helmfile.*%.ya?ml"] = "helm",
-  },
+	extension = {
+		gotmpl = "gotmpl",
+	},
+	pattern = {
+		[".*/templates/.*%.tpl"] = "helm",
+		[".*/templates/.*%.ya?ml"] = "helm",
+		["helmfile.*%.ya?ml"] = "helm",
+	},
 })
 
 vim.g.netrw_browse_split = 0
+vim.g.netrw_sort_sequence = "[/]$,*"
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
+-- vim.g.netrw
 -- vim.g.netrw_keepdir = 0
 vim.opt.scrolloff = 12
 
-vim.api.nvim_set_hl(0, "CurSearch", { bg = "#FFA500", fg = "black", bold = true, underline = true })  -- Orange background, black text, bold, underlined
+vim.api.nvim_set_hl(0, "CurSearch", { bg = "#FFA500", fg = "black", bold = true, underline = true }) -- Orange background, black text, bold, underlined
 
 -- vim.api.nvim_set_keymap("n", "<C-w>|", "<C-w>z", {})
 
@@ -123,7 +140,6 @@ vim.api.nvim_set_hl(0, "CurSearch", { bg = "#FFA500", fg = "black", bold = true,
 --   vim.cmd("update")
 --   return "<Esc>"
 -- end, { silent = true })
-
 
 -- vim.api.nvim_create_autocmd({ "TextChanged", "FocusLost", "BufEnter" }, {
 --   pattern = "*", -- Apply to all files
@@ -138,4 +154,3 @@ vim.api.nvim_set_hl(0, "CurSearch", { bg = "#FFA500", fg = "black", bold = true,
 -- end, { silent = true })
 --
 --
-
