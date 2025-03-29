@@ -14,28 +14,28 @@ else
   set shortmess=aoO
 endif
 badd +1 ~/projects/fem-htmx-proj
-badd +102 ~/projects/fem-htmx-proj/cmd/main.go
+badd +98 ~/projects/fem-htmx-proj/cmd/main.go
 argglobal
 %argdel
 $argadd ~/projects/fem-htmx-proj
 edit ~/projects/fem-htmx-proj/cmd/main.go
 argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
+setlocal foldmethod=manual
+setlocal foldexpr=0
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 104 - ((12 * winheight(0) + 12) / 24)
+let s:l = 99 - ((10 * winheight(0) + 10) / 21)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 104
-normal! 033|
+keepjumps 99
+normal! 0
 lcd ~/.dotfiles/nvim/.config/nvim
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'

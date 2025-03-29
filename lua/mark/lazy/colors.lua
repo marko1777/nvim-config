@@ -12,6 +12,7 @@ return {
 	{
 		"cpea2506/one_monokai.nvim",
 		name = "one_monokai",
+        enabled = false,
 		config = function()
 			require("one_monokai").setup({
 				transparent = true, -- enable transparent window
@@ -62,22 +63,22 @@ return {
 			ColorMyPencils()
 		end,
 	},
-	{
-		"rose-pine/neovim",
-		name = "rose-pine",
-		config = function()
-			require("rose-pine").setup({
-				disable_background = true,
-				dim_inactive_windows = true,
-				styles = {
-					italic = false,
-				},
-			})
-
-			-- vim.cmd("colorscheme rose-pine")
-			-- vim.cmd("colorscheme rose-pine-moon")
-			--
-			ColorMyPencils()
-		end,
-	},
+	-- {
+	-- 	"rose-pine/neovim",
+	-- 	name = "rose-pine",
+	-- 	config = function()
+	-- 		require("rose-pine").setup({
+	-- 			disable_background = true,
+	-- 			dim_inactive_windows = true,
+	-- 			styles = {
+	-- 				italic = false,
+	-- 			},
+	-- 		})
+	--
+	-- 		-- vim.cmd("colorscheme rose-pine")
+	-- 		-- vim.cmd("colorscheme rose-pine-moon")
+	-- 		--
+	-- 		ColorMyPencils()
+	-- 	end,
+	-- },
 }

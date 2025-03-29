@@ -23,22 +23,23 @@ return {
 					}),
 				},
 			})
-
+		end,
+		keys = {
 			vim.keymap.set("n", "<leader>to", function()
-				neotest.output.open({ enter = true })
-			end, { desc = "Output test" })
+				require("neotest").output.open({ enter = true })
+			end, { desc = "Output test" }),
 			vim.keymap.set("n", "<leader>ts", function()
-				neotest.summary.toggle()
-			end, { desc = "Toggle test Summary" })
+				require("neotest").summary.toggle()
+			end, { desc = "Toggle test Summary" }),
 			-- vim.keymap.set("n", "<leader>tw", function()
-			-- 	neotest.watch.toggle()
+			-- 	require("neotest").watch.toggle()
 			-- end, {desc = "Watch files"})
 			vim.keymap.set("n", "<leader>tc", function()
-				neotest.run.run()
-			end, { desc = "Run nearest test" })
+				require("neotest").run.run()
+			end, { desc = "Run nearest test" }),
 			vim.keymap.set("n", "<leader>td", function()
 				require("neotest").run.run({ suite = false, strategy = "dap" })
-			end, { desc = "Debug nearest test" })
-		end,
+			end, { desc = "Debug nearest test" }),
+		},
 	},
 }

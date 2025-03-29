@@ -3,9 +3,11 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 
 	config = function()
+        local custom_catppuccin = require'lualine.themes.catppuccin'
+        custom_catppuccin.normal.c.fg = "#bfbfbf"
 		require("lualine").setup({
 			options = {
-				theme = "one_monokai",
+				theme = custom_catppuccin
 			},
 
 			sections = {

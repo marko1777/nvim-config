@@ -83,3 +83,12 @@ vim.keymap.set("n", "<leader>ee", "oif err != nil {<CR>}<Esc>Oreturn err<Esc>")
 
 vim.keymap.set("n", "<leader>el", 'oif err != nil {<CR>}<Esc>Ologger.Error("error", "error", err)<Esc>F.;i')
 
+vim.keymap.set("n", "<leader>ws", function()
+	vim.opt.list = true
+	vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+end, { desc = "Show whitespaces" })
+
+vim.keymap.set("n", "<leader>wh", function()
+	vim.opt.list = false
+	vim.opt.listchars = {}
+end, { desc = "Hide whitespaces" })

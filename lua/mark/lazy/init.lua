@@ -27,9 +27,10 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 		},
 		opts = {},
-		config = function()
-			vim.keymap.set("n", "<leader>o", ":lua require'otter'.activate()<CR>")
-		end,
+		keys = {
+			vim.keymap.set("n", "<leader>o", ":lua require'otter'.activate()<CR>"),
+		},
+		config = function() end,
 	},
 	-- {
 	-- 	"lukas-reineke/indent-blankline.nvim",
@@ -51,15 +52,15 @@ return {
 			vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
 		end,
 	},
-	-- {
-	-- 	"iamcco/markdown-preview.nvim",
-	-- 	cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-	-- 	build = "cd app && npm install",
-	-- 	init = function()
-	-- 		vim.g.mkdp_filetypes = { "markdown" }
-	-- 	end,
-	-- 	ft = { "markdown" },
-	-- },
+	{
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		build = "cd app && npm install",
+		init = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
+	},
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		-- dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
@@ -69,11 +70,18 @@ return {
 		--@type render.md.UserConfig
 		config = function()
 			require("render-markdown").setup({
-                -- preset = 'none',
+				latex = { enabled = false },
+				-- preset = 'none',
 				-- code = {
 				-- 	disable_background = {}
 				-- },
 			})
 		end,
+	},
+	{
+		"tpope/vim-sleuth",
+		-- config = function()
+		-- 	require("vim-sleuth").setup({})
+		-- end,
 	},
 }
