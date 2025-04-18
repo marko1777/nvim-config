@@ -1,6 +1,6 @@
 return {
 	"mfussenegger/nvim-dap",
-	-- lazy = true,
+	event = "VeryLazy",
 
 	dependencies = {
 		"rcarriga/nvim-dap-ui",
@@ -12,39 +12,97 @@ return {
 		"jay-babu/mason-nvim-dap.nvim",
 	},
 	keys = {
-		vim.keymap.set("n", "<F5>", function()
-			require("dap").continue()
-		end, { desc = "Debug: Start/Continue" }),
-		vim.keymap.set("n", "<F1>", function()
-			require("dap").step_over()
-		end, { desc = "Debug: Step Over" }),
-		vim.keymap.set("n", "<F2>", function()
-			require("dap").step_into()
-		end, { desc = "Debug: Step Into" }),
-		vim.keymap.set("n", "<F3>", function()
-			require("dap").step_out()
-		end, { desc = "Debug: Step Out" }),
-		vim.keymap.set("n", "<leader>db", function()
-			require("dap").toggle_breakpoint()
-		end, { desc = "DAP: Toggle breackpoint" }),
-		vim.keymap.set("n", "<leader>dB", function()
-			require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
-		end, { desc = "DAP: Set breakpoint" }),
-		vim.keymap.set("n", "<leader>dN", function()
-			require("dap").step_back()
-		end, { desc = "DAP: Step back" }),
-		vim.keymap.set("n", "<leader>dr", function()
-			require("dap").repl.toggle()
-		end, { desc = "DAP: Toggle REPL" }),
-		vim.keymap.set("n", "<leader>d.", function()
-			require("dap").goto_()
-		end, { desc = "DAP: Go to" }),
-		vim.keymap.set("n", "<leader>dh", function()
-			require("dap").run_to_cursor()
-		end, { desc = "DAP: Run to cursor" }),
-		vim.keymap.set("n", "<leader>de", function()
-			require("dap").set_exception_breakpoints()
-		end, { desc = "DAP: Set exception breakpoints" }),
+		{
+			"<F5>",
+			function()
+				require("dap").continue()
+			end,
+			desc = "Debug: Start/Continue",
+		},
+		{
+			"<F1>",
+			function()
+				require("dap").step_over()
+			end,
+			desc = "Debug: Step Over",
+		},
+		{
+			"<F2>",
+			function()
+				require("dap").step_into()
+			end,
+			desc = "Debug: Step Into",
+		},
+		{
+			"<F3>",
+			function()
+				require("dap").step_out()
+			end,
+			desc = "Debug: Step Out",
+		},
+		{
+			"<leader>db",
+			function()
+				require("dap").toggle_breakpoint()
+			end,
+			desc = "DAP: Toggle breackpoint",
+		},
+		{
+			"<leader>dB",
+			function()
+				require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+			end,
+			desc = "DAP: Set breakpoint",
+		},
+		{
+			"<leader>dN",
+			function()
+				require("dap").step_back()
+			end,
+			desc = "DAP: Step back",
+		},
+		{
+			"<leader>dr",
+			function()
+				require("dap").repl.toggle()
+			end,
+			desc = "DAP: Toggle REPL",
+		},
+		{
+			"<leader>d.",
+			function()
+				require("dap").goto_()
+			end,
+			desc = "DAP: Go to",
+		},
+		{
+			"<leader>dh",
+			function()
+				require("dap").run_to_cursor()
+			end,
+			desc = "DAP: Run to cursor",
+		},
+		{
+			"<leader>de",
+			function()
+				require("dap").set_exception_breakpoints()
+			end,
+			desc = "DAP: Set exception breakpoints",
+		},
+		{
+			"<leader>dl",
+			function()
+				require("dap").run_last()
+			end,
+			desc = "[d]ebug [l]ast",
+		},
+		{
+			"<leader>dt",
+			function()
+				require("dap").terminate()
+			end,
+			desc = "[d]ebug [t]erminate",
+		},
 	},
 
 	config = function()
