@@ -42,11 +42,7 @@ return {
 			highlight = {
 				-- `false` will disable the whole extension
 				enable = true,
-				disable = function(lang, buf)
-					if lang == "json" then
-						print("disabled")
-						return true
-					end
+				disable = function(_, buf)
 					local max_filesize = 100 * 1024 -- 100 KB
 					local ok, size = pcall(vim.fn.getfsize, vim.api.nvim_buf_get_name(buf))
 					if ok and size and size > max_filesize then
