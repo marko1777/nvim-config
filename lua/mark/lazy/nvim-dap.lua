@@ -69,6 +69,13 @@ return {
 			desc = "DAP: Toggle REPL",
 		},
 		{
+			"<leader>dR",
+			function()
+				require("dap").clear_breakpoints()
+			end,
+			desc = "[d]ebug [R]emove breakpoints",
+		},
+		{
 			"<leader>d.",
 			function()
 				require("dap").goto_()
