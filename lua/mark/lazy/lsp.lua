@@ -39,7 +39,13 @@ return {
 				-- 	"clangd",
 				-- },
 			},
-			-- gopls = {},
+			gopls = {
+				settings = {
+					gopls = {
+						buildFlags = { "-tags=e2e" },
+					},
+				},
+			},
 
 			-- pyright = {},
 			-- rust_analyzer = {},
@@ -117,6 +123,8 @@ return {
 
 		null_ls.setup({
 			sources = {
+				-- null_ls.builtins.completion.spell,
+
 				null_ls.builtins.formatting.black.with({
 					filetypes = { "python" },
 				}),
@@ -179,7 +187,10 @@ return {
 		-- 	matching = { disallow_symbol_nonprefix_matching = false },
 		-- })
 		--
-		-- vim.diagnostic.config({
+		vim.diagnostic.config({
+			virtual_text = true,
+			-- virtual_lines = true,
+		})
 		-- 	-- update_in_insert = true,
 		-- 	float = {
 		-- 		-- severity = vim.diagnostic.severity.ERROR,

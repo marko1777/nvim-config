@@ -15,19 +15,21 @@ return {
 
 				cpp = { "clang_format" },
 
-				go = { "goimports", "gofmt", "golines" },
+				-- go = { "goimports", "gofmt", "golines" },
 
-				sql = { "sql-formatter" },
+				go = { "goimports", "gofmt" },
+
+				sql = { "sleek" },
 			},
 		})
-		require("conform").formatters.golines = {
-			append_args = { "-m", "80" },
-		}
-		-- vim.api.nvim_create_autocmd("BufWritePre", {
-		-- 	pattern = "*.go",
-		-- 	callback = function(args)
-		-- 		require("conform").format({ bufnr = args.buf })
-		-- 	end,
-		-- })
+		-- require("conform").formatters.golines = {
+		-- 	append_args = { "-m", "80" },
+		-- }
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			pattern = "*.go",
+			callback = function(args)
+				require("conform").format({ bufnr = args.buf })
+			end,
+		})
 	end,
 }

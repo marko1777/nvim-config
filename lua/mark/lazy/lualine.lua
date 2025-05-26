@@ -3,15 +3,23 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 
 	config = function()
-        local custom_catppuccin = require'lualine.themes.catppuccin'
-        custom_catppuccin.normal.c.fg = "#bfbfbf"
+		local custom_catppuccin = require("lualine.themes.catppuccin")
+		custom_catppuccin.normal.c.fg = "#bfbfbf"
 		require("lualine").setup({
 			options = {
-				theme = custom_catppuccin
+				theme = custom_catppuccin,
 			},
 
 			sections = {
-				lualine_b = { "branch", "diagnostics" },
+				lualine_b = {
+					{
+						"branch",
+						fmt = function(str)
+							return string.sub(str, 1, 8)
+						end,
+					},
+					"diagnostics",
+				},
 				lualine_c = {
 					{
 						"filename",

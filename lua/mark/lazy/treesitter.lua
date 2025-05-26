@@ -43,7 +43,7 @@ return {
 				-- `false` will disable the whole extension
 				enable = true,
 				disable = function(_, buf)
-					local max_filesize = 100 * 1024 -- 100 KB
+					local max_filesize = 10 * 1024 * 1024 -- 10 MB
 					local ok, size = pcall(vim.fn.getfsize, vim.api.nvim_buf_get_name(buf))
 					if ok and size and size > max_filesize then
 						vim.notify(

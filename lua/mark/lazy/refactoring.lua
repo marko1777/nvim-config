@@ -4,7 +4,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		"nvim-treesitter/nvim-treesitter",
 	},
-    lazy = true,
+	lazy = true,
 	keys = {
 		vim.keymap.set({ "n", "x" }, "<leader>rr", function()
 			require("telescope").extensions.refactoring.refactors()
@@ -30,7 +30,7 @@ return {
 
 		-- Inline var supports both normal and visual mode
 		vim.keymap.set({ "n", "x" }, "<leader>ri", function()
-			require("refactgring").refactor("Inline Variable")
+			require("refactoring").refactor("Inline Variable")
 		end, { desc = "Inline Variable" }),
 
 		-- Extract block supports only normal mode

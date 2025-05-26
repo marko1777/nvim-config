@@ -20,13 +20,13 @@ return {
 
 		local builtin = require("telescope.builtin")
 		vim.keymap.set("n", "<leader>pf", function()
-			builtin.find_files({ no_ignore = true })
+			builtin.find_files({ no_ignore_parent = true })
 		end, { desc = "find files" })
 
 		vim.keymap.set("n", "<leader>pF", function()
 			builtin.find_files({
 				search_dirs = { vim.fn.input("Dir > ") },
-				no_ignore = true,
+				no_ignore_parent = true,
 			})
 		end, { desc = "find files in dir" })
 
@@ -54,9 +54,12 @@ return {
 			local word = vim.fn.expand("<cWORD>")
 			builtin.grep_string({ search = word })
 		end)
+		-- vim.keymap.set("n", "<leader>ps", function()
+		-- 	builtin.grep_string({ search = vim.fn.input("Grep > ") })
+		-- end, { desc = "grep string" })
 		vim.keymap.set("n", "<leader>ps", function()
-			builtin.grep_string({ search = vim.fn.input("Grep > ") })
-		end, { desc = "grep string" })
+			builtin.live_grep({ })
+		end, { desc = "grep prompt" })
 		vim.keymap.set("n", "<leader>pS", function()
 			builtin.live_grep({ glob_pattern = vim.fn.input("FileTypes > ") })
 		end, { desc = "grep string in file types" })
