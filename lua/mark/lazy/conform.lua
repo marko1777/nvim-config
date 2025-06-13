@@ -22,9 +22,11 @@ return {
 				sql = { "sleek" },
 			},
 		})
-		-- require("conform").formatters.golines = {
-		-- 	append_args = { "-m", "80" },
-		-- }
+
+		require("conform").formatters.golines = {
+			append_args = { "-m", "99" },
+		}
+
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			pattern = "*.go",
 			callback = function(args)
