@@ -43,6 +43,7 @@ return {
 		priority = 1000,
 		config = function()
 			require("catppuccin").setup({
+				auto_integrations = true,
 				transparent_background = true, -- disables setting the background color.
 				color_overrides = {
 					all = {
@@ -60,7 +61,7 @@ return {
 				default_integrations = false,
 			})
 
-			ColorMyPencils()
+			-- ColorMyPencils()
 		end,
 	},
 	-- {
@@ -68,8 +69,8 @@ return {
 	-- 	name = "rose-pine",
 	-- 	config = function()
 	-- 		require("rose-pine").setup({
-	-- 			disable_background = true,
-	-- 			dim_inactive_windows = true,
+	-- 			-- disable_background = true,
+	-- 			dim_inactive_windows = false,
 	-- 			styles = {
 	-- 				italic = false,
 	-- 			},

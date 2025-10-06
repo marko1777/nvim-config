@@ -4,11 +4,14 @@ return {
 		"nvim-treesitter/nvim-treesitter-context",
 	},
 	build = ":TSUpdate",
+	branch = 'master',
 	config = function()
 		require("treesitter-context").setup({
-			max_lines = 2,
-			multiline_threshold = 1,
+			max_lines = 1,
+			multiline_threshold = 2,
 		})
+		-- vim.api.nvim_set_hl(0, "@variable.parameter.go", { link = "@variable" })
+
 		require("nvim-treesitter.configs").setup({
 			modules = {},
 			-- A list of parser names, or "all"
@@ -43,7 +46,7 @@ return {
 				-- `false` will disable the whole extension
 				enable = true,
 				disable = function(_, buf)
-					local max_filesize = 10 * 1024 * 1024 -- 10 MB
+					local max_filesize = 3 * 1024 * 1024 -- 10 MB
 					local ok, size = pcall(vim.fn.getfsize, vim.api.nvim_buf_get_name(buf))
 					if ok and size and size > max_filesize then
 						vim.notify(
