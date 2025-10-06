@@ -12,7 +12,7 @@ return {
 	{
 		"cpea2506/one_monokai.nvim",
 		name = "one_monokai",
-        enabled = false,
+		enabled = false,
 		config = function()
 			require("one_monokai").setup({
 				transparent = true, -- enable transparent window
@@ -43,8 +43,20 @@ return {
 		priority = 1000,
 		config = function()
 			require("catppuccin").setup({
-				auto_integrations = true,
+				-- auto_integrations = true,
 				transparent_background = true, -- disables setting the background color.
+				custom_highlights = function(colors)
+					return {
+						["@variable.member"] = { fg = colors.text }, -- Change to desired color
+						["@property"] = { fg = "#f5bde6" }, -- Alternative capture group
+					}
+				end,
+				blink_cmp = {
+					style = "bordered",
+				},
+				styles = {
+					comments = { "italic" },
+				},
 				color_overrides = {
 					all = {
 						text = "#ffffff",
@@ -61,7 +73,7 @@ return {
 				default_integrations = false,
 			})
 
-			-- ColorMyPencils()
+			ColorMyPencils()
 		end,
 	},
 	-- {
