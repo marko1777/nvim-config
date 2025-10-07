@@ -48,7 +48,9 @@ return {
 				custom_highlights = function(colors)
 					return {
 						["@variable.member"] = { fg = colors.text }, -- Change to desired color
-						["@property"] = { fg = "#f5bde6" }, -- Alternative capture group
+						-- ["@property"] = { fg = "#FCCFC8" }, -- Alternative capture group
+						["@property"] = { fg = "#FFCCD0" }, -- Alternative capture group
+						["@constant.builtin"] = { fg = colors.pink }, -- Alternative capture group
 					}
 				end,
 				blink_cmp = {
