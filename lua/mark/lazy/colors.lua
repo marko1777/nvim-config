@@ -56,9 +56,8 @@ return {
 				blink_cmp = {
 					style = "bordered",
 				},
-				styles = {
-					comments = { "italic" },
-				},
+				no_italic = false, 
+				no_bold = false, 
 				color_overrides = {
 					all = {
 						text = "#ffffff",
