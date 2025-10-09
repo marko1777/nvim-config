@@ -13,6 +13,7 @@ local function install_and_start()
 			-- Get parser name based on filetype
 			local parser_name = vim.treesitter.language.get_lang(filetype) -- WARNING: might return filetype (not helpful)
 			if not parser_name then
+				-- print("No parser for filetype " .. filetype)
 				-- vim.notify(
 				--   "Filetype " .. vim.inspect(filetype) .. " has no parser registered",
 				--   vim.log.levels.WARN,
@@ -20,6 +21,7 @@ local function install_and_start()
 				-- )
 				return
 			end
+			-- print("Parser for " .. filetype .. " is " .. parser_name)
 
 			-- vim.notify(
 			--   vim.inspect("Successfully got parser " .. parser_name .. " for filetype " .. filetype),
@@ -30,12 +32,9 @@ local function install_and_start()
 			-- Check if parser_name is available in parser configs
 			local parser_configs = require("nvim-treesitter.parsers")
 			local parser_can_be_used = nil
-			if branch == "master" then
-				parser_can_be_used = parser_configs.list[parser_name]
-			elseif branch == "main" then
-				parser_can_be_used = parser_configs[parser_name]
-			end
+			parser_can_be_used = parser_configs[parser_name]
 			if not parser_can_be_used then
+				-- print("Parser config does not have parser " .. parser_name .. ", skipping")
 				-- vim.notify(
 				--   "Parser config does not have parser " .. vim.inspect(parser_name) .. ", skipping",
 				--   vim.log.levels.WARN,
@@ -48,6 +47,7 @@ local function install_and_start()
 
 			-- If not installed, install parser synchronously
 			if not parser_installed then
+				-- print("Installing parser for " .. parser_name)
 				require("nvim-treesitter").install({ parser_name }):wait(30000) -- main branch syntax
 			end
 
@@ -104,19 +104,6 @@ return {
 				end,
 			},
 
-			ensure_installed = {
-				"vimdoc",
-				"javascript",
-				"make",
-				"c",
-				"cpp",
-				"go",
-				"lua",
-				"rust",
-				"jsdoc",
-				"bash",
-			},
-
 			install_and_start(),
 		})
 
@@ -152,9 +139,27 @@ return {
 		-- Main branch uses ensure_installed as a separate call
 		vim.treesitter.language.register("bash", "sh")
 
-		-- vim.defer_fn(function()
-		-- 	require("nvim-treesitter").install(ensure_installed)
-		-- end, 1000)
+		local ensure_installed = {
+			"vimdoc",
+			"javascript",
+			"make",
+			"c",
+			"cpp",
+			"go",
+			"lua",
+			"rust",
+			"jsdoc",
+			"bash",
+		}
+
+		local already_installed = require("nvim-treesitter.config").get_installed()
+		local parsers_to_install = vim.iter(ensure_installed)
+			:filter(function(parser)
+				return not vim.tbl_contains(already_installed, parser)
+			end)
+			:totable()
+		require("nvim-treesitter").install(parsers_to_install)
+
 		require("nvim-treesitter").update()
 		--- Install and start parsers for nvim-treesitter.
 	end,
